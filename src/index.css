@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-display:
+    "Saira", "Manrope", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Brand palette */
+  --color-rosso: #d40000;       /* Ferrari Rosso Corsa */
+  --color-rosso-deep: #8a0000;  /* deep red for text/accents */
+  --color-giallo: #f8cc00;      /* Ferrari Giallo Modena */
+
+  /* Warm neutrals */
+  --color-canvas: #fdfaf5;      /* page background — very light warm white */
+  --color-surface: #f5ede0;     /* card backgrounds, image placeholders */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: var(--color-canvas);
+  color: #171717;
+  font-family: var(--font-sans);
+  letter-spacing: -0.011em;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* Disable all CSS transitions and animations globally — no motion, anywhere. */
+*,
+*::before,
+*::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Targeted exception: smooth scale + shadow on cards only. */
+.card {
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out !important;
+}
+
+/* Model tile hover: image scales, chin fades in. */
+.model-tile > div {
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+.model-tile:hover > div:first-child {
+  transform: scale(1.05);
+}

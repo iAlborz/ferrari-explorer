@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/components/categorycard.tsx","./src/components/filterbar.tsx","./src/components/header.tsx","./src/components/modelcard.tsx","./src/components/modeldetail.tsx","./src/components/panedetail.tsx","./src/data/cars.ts"],"version":"5.9.3"}
