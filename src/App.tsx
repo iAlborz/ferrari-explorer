@@ -4,8 +4,16 @@ import { Header } from "./components/Header";
 import { CategoryCard } from "./components/CategoryCard";
 import { ModelDetail } from "./components/ModelDetail";
 
+// Parse the model id from the URL path. "/m/f50" → "f50". "/" → null.
+function modelIdFromPath(pathname: string): string | null {
+  const m = pathname.match(/^\/m\/([^/]+)\/?$/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
 export function App() {
-  const [activeModelId, setActiveModelId] = useState<string | null>(null);
+  const [activeModelId, setActiveModelId] = useState<string | null>(() =>
+    modelIdFromPath(window.location.pathname)
+  );
 
   const activeModel = activeModelId
     ? allModels(FERRARI).find((m) => m.id === activeModelId) ?? null
@@ -43,6 +51,28 @@ export function App() {
     return result;
   })();
 
+  // Open a model: push the URL.
+  const openModel = (id: string) => {
+    window.history.pushState({}, "", `/m/${encodeURIComponent(id)}`);
+    setActiveModelId(id);
+  };
+
+  // Close: go back so browser history stays clean.
+  const closeModel = () => {
+    if (modelIdFromPath(window.location.pathname)) {
+      window.history.back();
+    } else {
+      setActiveModelId(null);
+    }
+  };
+
+  // Sync state with URL on browser back/forward.
+  useEffect(() => {
+    const onPopState = () => setActiveModelId(modelIdFromPath(window.location.pathname));
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
   // Lock body scroll while the ModelDetail overlay is open.
   useEffect(() => {
     document.body.style.overflow = activeModel ? "hidden" : "";
@@ -54,10 +84,11 @@ export function App() {
   // Esc closes the model overlay.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && activeModel) setActiveModelId(null);
+      if (e.key === "Escape" && activeModel) closeModel();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeModel]);
 
   return (
@@ -70,13 +101,13 @@ export function App() {
             <CategoryCard
               key={group.map((c) => c.id).join("+")}
               categories={group}
-              onOpenModel={(id) => setActiveModelId(id)}
+              onOpenModel={openModel}
             />
           ))}
         </div>
       </main>
 
-      {activeModel && <ModelDetail model={activeModel} onClose={() => setActiveModelId(null)} />}
+      {activeModel && <ModelDetail model={activeModel} onClose={closeModel} />}
     </div>
   );
 }
