@@ -22,6 +22,11 @@ function slugify(text: string): string {
     .replace(/^-|-$/g, "");
 }
 
+/** Variation slug from name + year — matches the keys in figma-cars.json. */
+export function slugifyVariation(name: string, year: string): string {
+  return slugify(`${name} ${year}`);
+}
+
 /**
  * Returns the first available image URL for a variation, or null if not found.
  * Falls back to the second image if the first file is somehow missing.
