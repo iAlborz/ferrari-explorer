@@ -181,10 +181,11 @@ export function imagePickerPlugin(password?: string): Plugin {
         try {
           const { query, page = 0 } = await readBody(req);
           if (!query) return sendJson(res, 400, { error: "missing query" });
-          if (!queryCache.has(query)) {
-            queryCache.set(query, await searchImages(query));
+          let all = queryCache.get(query);
+          if (!all || all.length === 0) {
+            all = await searchImages(query);
+            if (all.length > 0) queryCache.set(query, all);
           }
-          const all = queryCache.get(query)!;
           const slice = all.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
           sendJson(res, 200, { results: slice, total: all.length, page });
         } catch (e: any) {
