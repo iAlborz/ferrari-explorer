@@ -4571,5 +4571,16 @@
     "tags": [],
     "description": "Custom one-off commissioned by the Sultan of Brunei.",
     "curated": true
+  },
+  {
+    "name": "296-speciale-piloti-ferrari-2025",
+    "slug": "296-speciale-piloti-ferrari-2025",
+    "image_files": [
+      "296-speciale-piloti-ferrari-2025-1.jpg"
+    ],
+    "production_count": null,
+    "tags": [],
+    "description": "",
+    "curated": true
   }
 ]
