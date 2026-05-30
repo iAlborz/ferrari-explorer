@@ -872,7 +872,7 @@ export const FERRARI: Brand = {
             { id: "296-gtb", name: "296 GTB", year: "2022–", power: "830 hp", description: "Berlinetta. Optional Assetto Fiorano package adds Multimatic dampers, titanium exhaust, lighter carbon trim." },
             { id: "296-gts", name: "296 GTS", year: "2023–", power: "830 hp", description: "Retractable hardtop spider." },
             { id: "296-speciale", name: "296 Speciale", year: "2025–", power: "880 hp", description: "Track-focused special edition — spiritual successor to the 458 Speciale and 488 Pista." },
-            { id: "296-speciale-piloti", name: "296 Speciale Piloti Ferrari", year: "2025–", power: "880 hp", description: "Tailor Made configuration unveiled at Le Mans 2025 honouring Ferrari WEC successes." },
+            { id: "296-speciale-piloti", name: "296 Speciale Piloti", year: "2025–", power: "880 hp", description: "Tailor Made configuration unveiled at Le Mans 2025 honouring Ferrari WEC successes." },
             { id: "296-speciale-a", name: "296 Speciale A", year: "2026–", power: "880 hp", description: "Open spider version of the 296 Speciale. Follows the 458 Speciale A and 488 Pista Spider tradition.", },
           ],
         },
