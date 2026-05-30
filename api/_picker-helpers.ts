@@ -29,13 +29,18 @@ export function checkAuth(req: any): boolean {
 
 /** Try DuckDuckGo first; fall back to Bing image scrape if DDG blocks us. */
 export async function searchImages(query: string): Promise<SearchResult[]> {
+  console.log(`[picker] search "${query}"`);
   let results = await searchDdg(query);
+  console.log(`[picker] DDG returned ${results.length} results`);
   if (results.length === 0) {
-    console.warn(`[picker] DDG empty for "${query}", trying Bing fallback`);
     results = await searchBing(query);
+    console.log(`[picker] Bing fallback returned ${results.length} results`);
   }
-  return results
-    .filter((r) => !BAD_TOKENS.some((t) => r.image.toLowerCase().includes(t)));
+  const filtered = results.filter(
+    (r) => !BAD_TOKENS.some((t) => r.image.toLowerCase().includes(t)),
+  );
+  console.log(`[picker] after bad-token filter: ${filtered.length}`);
+  return filtered;
 }
 
 async function searchDdg(query: string): Promise<SearchResult[]> {
