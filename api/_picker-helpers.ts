@@ -27,28 +27,30 @@ export function checkAuth(req: any): boolean {
   return provided === required;
 }
 
-/** Step 1: scrape the DDG search-page HTML for a vqd token. */
-async function getVqd(query: string): Promise<string | null> {
-  const url = `https://duckduckgo.com/?q=${encodeURIComponent(query)}&iax=images&ia=images`;
-  const res = await fetch(url, { headers: { "User-Agent": UA } });
-  if (!res.ok) {
-    console.warn(`[picker] vqd page returned ${res.status}`);
-    return null;
+/** Try DuckDuckGo first; fall back to Bing image scrape if DDG blocks us. */
+export async function searchImages(query: string): Promise<SearchResult[]> {
+  let results = await searchDdg(query);
+  if (results.length === 0) {
+    console.warn(`[picker] DDG empty for "${query}", trying Bing fallback`);
+    results = await searchBing(query);
   }
-  const html = await res.text();
-  const m = /vqd=['"]([\d-]+)['"]/.exec(html) || /vqd=([\d-]+)/.exec(html);
-  if (!m) console.warn(`[picker] no vqd token in ${html.length}-byte HTML; preview: ${html.slice(0, 200)}`);
-  return m ? m[1] : null;
+  return results
+    .filter((r) => !BAD_TOKENS.some((t) => r.image.toLowerCase().includes(t)));
 }
 
-/** Step 2: hit the i.js endpoint with that token and parse results. */
-export async function searchImages(query: string): Promise<SearchResult[]> {
-  const vqd = await getVqd(query);
-  if (!vqd) return [];
+async function searchDdg(query: string): Promise<SearchResult[]> {
+  const vqdRes = await fetch(
+    `https://duckduckgo.com/?q=${encodeURIComponent(query)}&iax=images&ia=images`,
+    { headers: { "User-Agent": UA } },
+  );
+  if (!vqdRes.ok) return [];
+  const html = await vqdRes.text();
+  const m = /vqd=['"]([\d-]+)['"]/.exec(html) || /vqd=([\d-]+)/.exec(html);
+  if (!m) return [];
   const api =
     "https://duckduckgo.com/i.js?" +
     new URLSearchParams({
-      l: "us-en", o: "json", q: query, vqd, f: ",,,,,", p: "1", v7exp: "a",
+      l: "us-en", o: "json", q: query, vqd: m[1], f: ",,,,,", p: "1", v7exp: "a",
     }).toString();
   const res = await fetch(api, {
     headers: {
@@ -57,20 +59,11 @@ export async function searchImages(query: string): Promise<SearchResult[]> {
       Accept: "application/json, text/javascript, */*; q=0.01",
     },
   });
-  if (!res.ok) {
-    console.warn(`[picker] i.js returned ${res.status}`);
-    return [];
-  }
+  if (!res.ok) return [];
   let data: { results?: Array<{ image?: string; title?: string; url?: string }> };
-  try {
-    data = await res.json();
-  } catch (e) {
-    console.warn(`[picker] i.js JSON parse failed: ${e}`);
-    return [];
-  }
+  try { data = await res.json(); } catch { return []; }
   return (data.results ?? [])
     .filter((r): r is { image: string; title?: string; url?: string } => !!r.image)
-    .filter((r) => !BAD_TOKENS.some((t) => r.image.toLowerCase().includes(t)))
     .map((r) => {
       let source = "";
       try {
@@ -78,6 +71,55 @@ export async function searchImages(query: string): Promise<SearchResult[]> {
       } catch {}
       return { image: r.image, title: r.title ?? "", url: r.url ?? "", source };
     });
+}
+
+/** Bing Images: scrape the public HTML search-results page. Each result tile
+    embeds a JSON blob in a `data-m` attribute that contains the source image
+    URL, page URL, and title. No API key needed. */
+async function searchBing(query: string): Promise<SearchResult[]> {
+  const url = `https://www.bing.com/images/search?q=${encodeURIComponent(query)}&form=HDRSC2&first=1`;
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent": UA,
+      Accept: "text/html,application/xhtml+xml",
+      "Accept-Language": "en-US,en;q=0.9",
+    },
+  });
+  if (!res.ok) {
+    console.warn(`[picker] Bing returned ${res.status}`);
+    return [];
+  }
+  const html = await res.text();
+  // Each result tile has class="iusc" with a data-m JSON attribute.
+  const re = /class="iusc"[^>]*?\sm="([^"]+)"/g;
+  const out: SearchResult[] = [];
+  let match: RegExpExecArray | null;
+  while ((match = re.exec(html)) !== null && out.length < 100) {
+    try {
+      const decoded = match[1].replace(/&quot;/g, '"').replace(/&amp;/g, "&");
+      const m = JSON.parse(decoded) as {
+        murl?: string; turl?: string; purl?: string; t?: string;
+      };
+      const image = m.murl;
+      if (!image) continue;
+      let source = "";
+      try {
+        source = m.purl ? new URL(m.purl).hostname.replace(/^www\./, "") : "";
+      } catch {}
+      out.push({
+        image,
+        title: m.t ?? "",
+        url: m.purl ?? "",
+        source,
+      });
+    } catch {
+      continue;
+    }
+  }
+  if (out.length === 0) {
+    console.warn(`[picker] Bing parsed 0 results from ${html.length}-byte HTML`);
+  }
+  return out;
 }
 
 /** Download a URL, normalize via sharp (max 1200px wide, JPEG quality 80). */
