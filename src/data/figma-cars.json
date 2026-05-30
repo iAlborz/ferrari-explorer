@@ -2276,7 +2276,8 @@
       "f430-spider-bio-fuel-2008-1.jpg",
       "f430-spider-bio-fuel-2008-2.jpg",
       "f430-spider-bio-fuel-2008-3.jpg",
-      "f430-spider-bio-fuel-2008-4.jpg"
+      "f430-spider-bio-fuel-2008-4.jpg",
+      "f430-spider-bio-fuel-2008-5.jpg"
     ],
     "production_count": null,
     "tags": [
@@ -2292,7 +2293,8 @@
       "sp1-2008-1.jpg",
       "sp1-2008-2.jpg",
       "sp1-2008-3.jpg",
-      "sp1-2008-4.jpg"
+      "sp1-2008-4.jpg",
+      "sp1-2008-5.jpg"
     ],
     "production_count": null,
     "tags": [
@@ -2426,8 +2428,7 @@
     "image_files": [
       "458-italia-2009-2015-1.jpg",
       "458-italia-2009-2015-2.jpg",
-      "458-italia-2009-2015-3.jpg",
-      "458-italia-2009-2015-4.jpg"
+      "458-italia-2009-2015-3.jpg"
     ],
     "production_count": "20",
     "tags": [],
@@ -2440,8 +2441,7 @@
     "image_files": [
       "458-italia-china-edition-2012-1.jpg",
       "458-italia-china-edition-2012-2.jpg",
-      "458-italia-china-edition-2012-3.jpg",
-      "458-italia-china-edition-2012-4.jpg"
+      "458-italia-china-edition-2012-3.jpg"
     ],
     "production_count": "20",
     "tags": [],
@@ -2474,7 +2474,9 @@
       "458-spider-2011-2015-1.jpg",
       "458-spider-2011-2015-2.jpg",
       "458-spider-2011-2015-3.jpg",
-      "458-spider-2011-2015-4.jpg"
+      "458-spider-2011-2015-4.jpg",
+      "458-spider-2011-2015-5.jpg",
+      "458-spider-2011-2015-6.jpg"
     ],
     "production_count": null,
     "tags": [],
@@ -2488,7 +2490,8 @@
       "458-speciale-2013-2015-1.jpg",
       "458-speciale-2013-2015-2.jpg",
       "458-speciale-2013-2015-3.jpg",
-      "458-speciale-2013-2015-4.jpg"
+      "458-speciale-2013-2015-4.jpg",
+      "458-speciale-2013-2015-5.jpg"
     ],
     "production_count": null,
     "tags": [],
@@ -2547,7 +2550,9 @@
       "458-mm-speciale-2016-1.jpg",
       "458-mm-speciale-2016-2.jpg",
       "458-mm-speciale-2016-3.jpg",
-      "458-mm-speciale-2016-4.jpg"
+      "458-mm-speciale-2016-4.jpg",
+      "458-mm-speciale-2016-5.jpg",
+      "458-mm-speciale-2016-6.jpg"
     ],
     "production_count": null,
     "tags": [
@@ -2564,7 +2569,9 @@
       "458-italia-gt3-2011-1.jpg",
       "458-italia-gt3-2011-2.jpg",
       "458-italia-gt3-2011-3.jpg",
-      "458-italia-gt3-2011-4.jpg"
+      "458-italia-gt3-2011-4.jpg",
+      "458-italia-gt3-2011-5.jpg",
+      "458-italia-gt3-2011-6.jpg"
     ],
     "production_count": null,
     "tags": [],
@@ -2617,14 +2624,14 @@
     "name": "458 Challenge  EVO 2014",
     "slug": "458-challenge-evo-2014",
     "image_files": [
+      "458-challenge-evo-2014-1.jpg",
       "458-challenge-evo-2014-2.jpg",
-      "458-challenge-evo-2014-3.jpg",
-      "458-challenge-evo-2014-4.jpg",
-      "458-challenge-evo-2014-4.jpg"
+      "458-challenge-evo-2014-3.jpg"
     ],
     "production_count": "50",
     "tags": [],
-    "description": ""
+    "description": "",
+    "curated": true
   },
   {
     "name": "488 GTB 2016",

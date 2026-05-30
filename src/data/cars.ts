@@ -428,9 +428,78 @@ export const FERRARI: Brand = {
           description: "All-aluminium chassis and body — a clean break from the previous steel spaceframe. 400 hp V8, fully exposed engine bay through a glass cover. The 360 broke the wedge era for good and reset Ferrari design on the curved path it still walks. 8,800 coupés built.",
           tags: [],
           variations: [
-            { id: "360-modena", name: "360 Modena", year: "1999–2005", power: "400 hp", description: "Berlinetta. 8,800 built." },
-            { id: "360-spider", name: "360 Spider", year: "2001–2005", power: "400 hp", description: "Soft-top convertible. 7,565 built." },
-            { id: "360-cs", name: "360 Challenge Stradale", year: "2003–2005", power: "425 hp", description: "Track-focused road-legal homologation. 110 kg lighter, Lexan windows. 1,274 built." },
+            {
+              id: "360-modena",
+              name: "360 Modena",
+              year: "1999-2005",
+              power: "400 hp",
+              description:
+                "The Ferrari 360 (Type F131) is a two-seater, mid-engine, rear-wheel drive sports car produced from 1999 to 2005. It succeeded the Ferrari F355 and was later replaced by the Ferrari F430. In collaboration with Alcoa, Ferrari developed a new all-aluminum space-frame chassis that was 40% stiffer and 28% lighter than the previous steel chassis, despite being larger in size. This change contributed to a reduction in overall weight and an improvement in acceleration, with the 0 to 100 km/h time reduced to 4.5 seconds.\n\nThe car's design marked a shift from the sharp angles and flip-up headlights of the past, featuring a new V8 engine with a 3.6-litre capacity and a power output of 400 horsepower. The first model released was the 360 Modena, followed by the 360 Spider and the high-performance Challenge Stradale. The latter included enhancements like carbon ceramic brakes, track-tuned suspension, and a power increase for better track performance.\n\nThe 360 Modena, named after Enzo Ferrari's birthplace, was produced until 2005.",
+            },
+            {
+              id: "360-spider",
+              name: "360 Spider",
+              year: "2001-2005",
+              power: "400 hp",
+              description:
+                "The Ferrari 360 Spider was introduced at the 2000 Geneva Motor Show. Designed with a convertible structure from the onset, the 360 Spider features enhancements to compensate for the loss of torsional rigidity typically associated with removing a coupe's roof. These enhancements include strengthened sills, a stiffened front floorpan, and a redesigned windscreen frame. Additional side reinforcements and a cross brace in front of the engine ensure the necessary dynamic rigidity and passenger safety is maintained through a strengthened windscreen frame and roll bars.\n\nThe Spider's design is characterized by a curvilinear waistline, with fairings that suggest the start of a roof and stable roll bars integrated within these raised areas. The use of light aluminum construction keeps the Spider only 60 kg heavier than the coupe. It showcases the same 3.6 L V8 engine as the Modena, capable of producing 400 horsepower, visible under a glass engine cover. To adapt to the convertible design, the engine's intake manifolds were repositioned closer together in the engine compartment, facilitated by larger side air intakes.\n\nPerformance-wise, the Spider's acceleration is slightly slower than the Modena due to the minor increase in weight, and the top speed is somewhat reduced. The electrically operated convertible top, which can be stowed away when not in use, is available in multiple colors including black, blue, grey, and beige.",
+            },
+            {
+              id: "360-barchetta",
+              name: "360 Barchetta",
+              year: "2000",
+              power: "400 hp",
+              description:
+                "The Ferrari 360 Barchetta is a unique one-off model based on the Ferrari 360 Spider, commissioned in 2000 by Gianni Agnelli as a wedding gift for Luca Cordero di Montezemolo, then chairman of Fiat and president of Ferrari. This special car retains many features of its base model, the 360 Spider, but with several distinctive modifications. The main alterations include the removal of the soft top system and roll bars, a different engine cover, and the installation of a visor instead of a full windshield to enhance airflow over the car.\n\nThe performance specifications of the Barchetta mirror those of the Spider, maintaining the same engine capabilities. Aesthetically, the car stands out with its Argento Nurburgring exterior paint complemented by red pinstriping. The interior is finished in black leather with cream fabric, and includes fabric seats with matching stitching. Notably, the dashboard is embroidered with the words \"360 Barchetta\" and the car is equipped with a paddle-shift gearbox.",
+            },
+            {
+              id: "360-cs",
+              name: "360 Challenge Stradale",
+              year: "2003-2005",
+              power: "425 hp",
+              description:
+                "The Challenge Stradale represents a track-focused version of the Ferrari 360 Modena, inspired by the racing series 360 Modena Challenge and the track-oriented Ferrari F355 \"Fiorano\". This model underscores Ferrari's commitment to enhancing track performance through meticulous improvements in handling, braking, and weight reduction, essential characteristics for racing. Designed with 20% track and 80% road use in mind, the Challenge Stradale boasts a modest 25 horsepower increase over the Modena, achieving 0 to 100 km/h acceleration in just 4.1 seconds.\n\nSignificant enhancements include an improved power-to-weight ratio, heightened throttle response, and better steering feedback. The integration of ceramic brakes from the Enzo and lighter components such as a sports exhaust system contribute to a 110 kg reduction in weight compared to the standard Modena, assuming all lightweight options are selected. These options include the removal of the radio, use of lexan door windows, and substitution of Alcantara for leather. Additional weight savings of 74 kg were achieved by using lighter bumpers, removing interior soundproofing, and standardizing carbon fiber seats.\n\nThe Challenge Stradale also features Brembo carbon ceramic brakes as standard, which not only reduce the car's weight by 16 kg but also enhance handling by minimizing unsprung weight and eliminating brake fade. Special lightweight BBS wheels further contribute to performance efficiency. While optional features like a stereo system and glass side windows can add back approximately 30 kg, the car remains significantly lighter and more agile, emphasizing its race-bred pedigree.",
+            },
+            {
+              id: "360-cs-cornes",
+              name: "360 Challenge Stradale 'Cornes Edition'",
+              year: "2004",
+              power: "425 hp",
+              description:
+                "The 'Cornes Edition' was made to celebrate 25 years of Cornes being the official importer of Ferrari's in Japan. The stand out features of this limited edition are the white rear grill and white rev counter along with the carbon fuel filler cap and paddle shift. These cars were also fitted with carbon ceramic brakes and gold brake callipers and each one has Michael Schumacher's signature on the door.",
+            },
+            {
+              id: "360-challenge",
+              name: "360 Challenge",
+              year: "1999-2004",
+              power: "405 hp",
+              description:
+                "The Ferrari 360 Challenge, derived from the 360 Modena, was a track-oriented variant designed specifically for the Ferrari Challenge racing series. Unlike its road car counterpart, the 360 Challenge was only available with an electrohydraulic-actuated automated manual transmission. At its launch, Ferrari touted the car's improved performance capabilities, with acceleration from 0 to 100 km/h in just 3.9 seconds, a notable 0.6 seconds faster than the standard Modena. The car featured enhanced aerodynamics, upgraded Brembo brakes with gold-colored calipers, and larger two-piece floating discs, along with specialized ABS software from Bosch. A lighter exhaust system contributed to a slight power increase over the standard engine.\n\nProduced in limited numbers with less than 200 units, the 360 Challenge was sold exclusively as a race car, with ownership conditional on participation in the Ferrari Challenge race series. This model marked a departure from previous Challenge versions, like the F355, which were essentially road cars modified for track use. The 360 Challenge boasted substantial improvements in handling and weight reduction, allowing it to significantly outperform the road version despite similar engine power.\n\nThe car's interior was completely reconfigured for racing, with the removal of the stereo, electric windows and locks, soundproofing, airbags, air conditioning, and even the handbrake. It was equipped with a single carbon-fibre racing seat, FIA-approved restraint harnesses, and a roll cage for increased safety. Additionally, a fire suppression system was installed. The instrument cluster was simplified to a monochrome LCD that displayed essential engine data. Racing dampers replaced the adaptive suspension of the road car, and the braking system was enhanced with larger brakes and additional cooling ducts to handle the rigors of racing.",
+            },
+            {
+              id: "360-n-gt",
+              name: "360 N-GT",
+              year: "1999-2004",
+              power: "547 hp",
+              description:
+                "The Ferrari 360 N-GT, a significantly tuned version of the 360 Challenge race car, was developed by Michelotto for the N-GT category in the FIA GT Championship. Recognized as the fastest iteration of the Ferrari 360, the engine of the N-GT, when unrestricted, generated over 547 horsepower, enabling top speeds around 310 km/h and acceleration from 0 to 97 km/h in approximately 3 seconds. This model marked the culmination of the collaboration between Ferrari and Michelotto, with its most recent notable performance being a victory at the 2011 Britcar Championship by SB Race Engineering.\n\nIn 2002, the 360 N-GT competed in the Australian Nations Cup Championship, managed by Prancing Horse Racing and driven by Australian racer John Bowe. The car finished third in the championship and was entered in the 2002 Bathurst 24 Hour race at Mount Panorama Circuit. It achieved pole position through driver Brad Jones, but faced mechanical issues with oil pressure that led to two engine changes during the race, ultimately forcing its retirement. Bowe continued to compete in the 360 N-GT, finishing second in the 2003 Nations Cup Championship. The car's final race was at the 2003 Bathurst 24 Hour, driven by a team that included David Brabham and Andrea Montermini. After performing strongly, running in third for several hours, the car was retired on lap 287.",
+            },
+            {
+              id: "360-gt",
+              name: "360 GT",
+              year: "2001 - 2003",
+              power: "436 hp",
+              description:
+                "The Ferrari 360 GT, a race-oriented version of the 360 Modena, was developed by Ferrari's Corse Clienti department in partnership with Michelotto Automobili to compete in the FIA N-GT class. The model debuted in the 2001 FIA GT Championship season, with Team JMB Giesse successfully winning both the N-GT Cup for Drivers and the N-GT Cup for Teams.\n\nProduced from 2002 to 2004, Ferrari manufactured 20 units of the 360 GT, making them available to customers through their Corse Clienti department. The 3.6-litre V8 engine of the 360 GT was enhanced to deliver 436 horsepower, representing a significant boost compared to the 360 Challenge models.\n\nThe 360 GT underwent extensive weight reduction measures beyond what was seen in the regular 360 Challenge versions. Efforts included lightening the wiring loom, which alone saved 7 kg, and removing non-essential components like air-conditioning brackets. The doors and front compartment lid were reconstructed using one-piece carbon fibre, contributing to a total weight reduction of 91 kg over the 360 Challenge, bringing the 360 GT's kerb weight down to 1,070 kg. To meet race regulations, ballast was added to adjust the car's weight to the mandated 1,100 kg limit.",
+            },
+            {
+              id: "360-gtc",
+              name: "360 GTC",
+              year: "2003-2004",
+              power: "472 hp",
+              description:
+                "The Ferrari 360 GTC was developed by Ferrari's Corse Clienti department in collaboration with Michelotto Automobili, replacing the earlier 360 GT model for competition in the N-GT class. Introduced in 2004, the 360 GTC carried forward the successful features of the 360 GT, including a sequential six-speed gearbox and an enhanced Magneti Marelli electronics package. It was homologated anew by the FIA/ACO, incorporating aerodynamic elements from the Challenge Stradale such as the front bumper, side skirts, engine cover, and a modified rear end. This redesign, informed by wind tunnel research, significantly improved vertical downforce through a new rear wing system.\n\nWeighing in at 1,100 kg with ballast, the 360 GTC also marked an advancement in engine performance. It featured a 3.6 L V8 engine, refined to improve fuel consumption while increasing power output. Originally, the 360 GT produced 445 horsepower, but the GTC increased this to 472 horsepower, even with 30.8 mm air restrictors required for N-GT class racing. Without these restrictors, the engine's power potential rises to around 550 horsepower.\n\nIn 2009, versions of the 360 GTC participated in international endurance races including events at Silverstone, Sebring, and Le Mans, driven by the Veloqx-Prodrive Racing team. These de-restricted, fully tuned versions of the GT-C demonstrated the model's capabilities on some of the world's most challenging circuits.",
+            },
           ],
         },
         {
@@ -442,10 +511,102 @@ export const FERRARI: Brand = {
           description: "F1-derived steering-wheel toggle for chassis modes, E-Diff, and a 4.3 L flat-plane V8. The F430 made Ferrari's technology ladder finally legible from the driver's seat. 3,327 coupés built.",
           tags: [],
           variations: [
-            { id: "f430", name: "F430", year: "2004–2009", power: "490 hp", description: "Berlinetta. 3,327 built." },
-            { id: "f430-spider", name: "F430 Spider", year: "2005–2009", power: "490 hp", description: "Open. 4,094 built." },
-            { id: "430-scuderia", name: "430 Scuderia", year: "2007–2009", power: "503 hp", description: "Track-edged: 100 kg lighter, carbon-ceramic brakes standard, Schumacher development input." },
-            { id: "scuderia-spider-16m", name: "Scuderia Spider 16M", year: "2008–2009", power: "503 hp", description: "Open Scuderia celebrating Ferrari's 16th Formula 1 Constructors' Championship. 499 built." },
+            {
+              id: "f430",
+              name: "F430",
+              year: "2005",
+              power: "490 hp",
+              description:
+                "The Ferrari F430, produced by Italian manufacturer Ferrari from 2004 to 2009, served as the successor to the Ferrari 360. Unveiled at the 2004 Paris Motor Show, this sports car marked an evolution in design and performance, leading to its replacement by the 458 in 2009.\n\nThe F430's design, a collaborative effort between Pininfarina and Frank Stephenson of Ferrari-Maserati, carried significant aerodynamic refinements from the 360. Although it maintained the same drag coefficient, the modifications significantly increased downforce. The F430 shared its basic structure with the 360, including the Alcoa Aluminium chassis, roofline, doors, and glass, but featured a distinctly different appearance that drew heavily on Ferrari's rich racing heritage. Notable design elements included the tail lights and engine cover vents from the Enzo, the Testarossa-style name inscription on the driver's side mirror, and large oval front bumper openings that echoed the Ferrari 156 \"shark nose\" model from the 1960s.",
+            },
+            {
+              id: "f430-spider",
+              name: "F430 Spider",
+              year: "2005",
+              power: "490 hp",
+              description:
+                "The F430 Spider, the convertible variant of the F430, debuted at the 2005 Geneva Motor Show and is Ferrari's 21st road-going convertible. Pininfarina designed the car using aerodynamic simulations similar to those used in Formula 1. The Spider features a two-stage folding roof that neatly tucks away above the engine bay. Although it shares the same interior and performance characteristics as the coupé, the Spider is slightly heavier, which reduces its top speed by 5 km/h compared to its hardtop counterpart.",
+            },
+            {
+              id: "f430-spider-bio-fuel",
+              name: "F430 Spider Bio Fuel",
+              year: "2008",
+              power: "490 hp",
+              description:
+                "The F430 Spider Bio Fuel, an ethanol-powered version of the F430 Spider, was showcased at the 2008 Detroit Auto Show. This model retains the standard 4.3-liter V8 engine, now producing 500 horsepower. It also achieves a 5% reduction in carbon dioxide emissions compared to the regular F430 Spider, aligning with more environmentally friendly performance standards.",
+            },
+            {
+              id: "sp1",
+              name: "SP1",
+              year: "2008",
+              power: "490 hp",
+              description:
+                "The SP1, Ferrari's newest supercar, marks the first vehicle designed under the company's own customization program. Designed by Fioravanti and built by Ferrari, the SP1 offers a shift in how Ferrari approaches bespoke vehicles. Unlike previous models like the 612 Kappa, 575 GTZ, G 50, and P4/5 by Pininfarina, which were outsourced and privately upgraded, the SP1 is both designed and sold directly by Ferrari.\n\nJapanese collector Junichiro Hiramatsu recently added the SP1 to his extensive collection of Ferraris, which includes various models and literature. With the launch of the Portfolio Program, Ferrari aims to keep customization in-house and discourage external upgrades, despite the higher cost associated with their bespoke offerings.",
+            },
+            {
+              id: "430-scuderia",
+              name: "430 Scuderia",
+              year: "2008",
+              power: "503 hp",
+              description:
+                "The 430 Scuderia, unveiled by Michael Schumacher at the 2007 Frankfurt Auto Show, succeeds the 360 Challenge Stradale. Designed to rival high-performance cars like the Porsche 911 GT2 and the Lamborghini Gallardo Superleggera, the 430 Scuderia is lighter and more powerful than the standard F430, boasting a horsepower of 503 at 8,500 rpm. The increase in power is attributed to a revised intake, exhaust, and an ion-sensing knock-detection system that enables a higher engine compression ratio. These enhancements have improved the weight-to-power ratio from 2.96 kg/hp to 2.5 kg/hp.\n\nThe Scuderia also features upgraded transmission software, \"Superfast2,\" which allows for faster shift times of 60 milliseconds. It integrates a new traction control system that combines the F1-Trac system from the 599 GTB with stability control and the E-Diff electronic differential. The car can accelerate from 0 to 100 km/h in 3.6 seconds and reaches a top speed of 319 km/h.",
+            },
+            {
+              id: "f430-challenge",
+              name: "F430 Challenge",
+              year: "2006",
+              power: "483 hp",
+              description:
+                "The Ferrari F430 Challenge, unveiled at the 2005 Frankfurt Motor Show, is a race car developed from the road-going Ferrari F430, designed specifically for competition in the Ferrari Challenge and the Rolex Sports Car racing series. This vehicle builds on the legacy of its predecessor, the Ferrari 360 Challenge, by incorporating similar modifications that optimize it for track performance.\n\nRetaining the same 4.3L V8 engine as the standard F430, the F430 Challenge benefits from a number of enhancements that focus primarily on performance rather than major engine changes. These enhancements include a racing exhaust system and tweaks to the engine management system to improve efficiency and performance. Additionally, the engine undergoes fine blueprinting to ensure it operates at peak performance under race conditions.\n\nSignificant weight reduction measures have been implemented in the F430 Challenge. These include the use of lighter materials and the removal of non-essential weight-contributing components that are typically found in the road car. The suspension system has also been extensively modified to better suit the rigors of track racing, offering improved handling and stability at high speeds.\n\nStylistically, the F430 Challenge maintains much of the road car's aesthetics but incorporates specific changes tailored for racing. This includes the adoption of Formula One-inspired BBS wheels fitted with a single central nut, facilitating quicker tire changes during races. These wheels are paired with large carbon brakes, providing exceptional stopping power necessary for competitive racing.\n\nOverall, the F430 Challenge exemplifies Ferrari's commitment to providing a high-performance race car that retains the DNA of its road-going versions, yet is perfectly adapted to the demands of motorsport environments.",
+            },
+            {
+              id: "f430-gtc",
+              name: "F430 GTC",
+              year: "2006",
+              power: "445 hp",
+              description:
+                "The Ferrari F430 GTC, developed since 2006 by Ferrari's Corse Clienti department in collaboration with Michelotto, represents Ferrari's pinnacle in GT2 class racing technology, tailored specifically for competition in prestigious international series such as the American Le Mans Series, the Le Mans Series, and the FIA GT Championship. This model has also been a regular competitor at the iconic 24 Hours of Le Mans, asserting its position as the fastest and most advanced racing iteration of the F430 platform.\n\nIn order to meet the strict regulations of the FIA GT2 championship, which aim to ensure parity among competing vehicles, adjustments are made to the cars including minimum weight requirements and the use of engine restrictors that vary based on engine displacement. To optimize its performance within these constraints, Ferrari modified the F430 GTC's original 4.3-liter V8 engine to a smaller 4.0-liter displacement. This strategic adjustment allowed the F430 GTC to compete in the 3.8–4.0 L subclass within GT2, which benefits from a lower minimum weight limit of 1,100 kg (2,425 lbs).\n\nThis engine downsizing naturally results in a slight reduction in power output, with the engine producing 445 PS (439 horsepower). However, the smaller engine allows for a 50 kg (110 lbs) increase in the car's minimum weight under race regulations. Despite this, the overall reduction in vehicle weight helps maintain a favorable power-to-weight ratio, ensuring that the F430 GTC remains highly competitive in its class. This meticulous balancing of regulations and vehicle dynamics showcases Ferrari's commitment to excelling in GT racing by optimizing every aspect of the car's performance and compliance with racing standards.",
+            },
+            {
+              id: "f430-gt3",
+              name: "F430 GT3",
+              year: "2006",
+              power: "550 hp",
+              description:
+                "The Ferrari F430 GT3, developed in 2006 by JMB Racing, is a racing variant specifically tailored for the FIA GT3 European Championship and other national GT championships like the British GT and FFSA GT. This model is based on the F430 Challenge but features several enhancements that differentiate it from both its sibling and the more GT2-spec racing cars.\n\nThe F430 GT3 is equipped with the same 4.3-liter V8 engine found in the F430 Challenge. However, for GT3 competition, this engine has been tuned to produce a higher output of 550 horsepower, which surpasses even the GT2 version of the F430 in terms of raw power. This tuning makes the GT3 one of the most potent iterations of the F430 series in Ferrari's racing lineup.\n\nDespite its greater power, the F430 GT3 adheres to GT3 regulations which require a specific power-to-weight ratio. For the GT3, this ratio mandates that the vehicle weighs approximately 1,219 kg (2,687 lbs) in race trim (excluding the driver and fuel). This weight is about 119 kg (262 lbs) heavier than its GT2 counterpart. The increased weight, despite the higher power output, contributes to its relatively slower performance on the track compared to the GT2. This was notably evident during the 2007 Spa 24 Hours endurance race, where the GT3 spec car's best qualification time lagged around 8 seconds per lap slower than the GT2 spec vehicle.\n\nThis performance disparity underscores the significant impact of vehicle dynamics and weight distribution in racing, where even substantial increases in power cannot always compensate for the drawbacks of added weight, particularly in a highly competitive setting like GT racing.",
+            },
+            {
+              id: "430-gt3-scuderia",
+              name: "430 GT3 Scuderia",
+              year: "2009",
+              power: "550 hp",
+              description:
+                "For the 2009 racing season, Kessel Racing developed a new car, the Scuderia GT3, envisioned as the successor to the highly successful Ferrari 430 GT3. This new car is based on the high-performance Ferrari Scuderia road car, and significant modifications were made within the limitations set by FIA GT3 regulations.\n\nThe Scuderia GT3 aims to surpass the performance of the F430 GT, which notably won the 2007 FIA GT3 European Championship. The adaptation of the Scuderia into a GT3 racing car involves comprehensive tuning and configuration adjustments to ensure it meets the competitive standards required for approval and homologation by the FIA. The car is expected to receive a new homologation form from the FIA, pending approval.\n\nInterest in the Scuderia GT3 is strong among Ferrari racing teams, with Kessel Racing planning to continue its involvement in the FIA GT3 Championship using this newer model. They will be joined by JMB Racing and CRS Racing, the latter of which is expanding its participation in international GT racing. CRS Racing has also confirmed a two-car entry in the FIA GT Championship, indicating a significant commitment to Ferrari's racing efforts across different levels of GT competition.",
+            },
+            {
+              id: "scg-p45-competizione",
+              name: "SCG P4/5 Competizione",
+              year: "2009",
+              power: "590 hp",
+              description:
+                "In September 2009, Glickenhaus announced his intention to race a new version of the P4/5 in 2010 24 Hours Nürburgring. The car, called the SCG P4/5 Competizione, would not be a conversion of his road car but instead an entirely new car with a Ferrari chassis, VIN and drivetrain, made under Glickenhaus's own car brand Scuderia Cameron Glickenhaus. In May 2010 however, it was revealed that the Competizione would in fact be raced in 2011, based on a 430 Scuderia. It would be built to FIA GT2 standards and raced by Scuderia Cameron Glickenhaus in an Experimental Class under the direction of Paolo Garella, former Head of Special Projects at Pininfarina. Ferrari completely distanced itself from the SCG P4/5 Competizione project in 2011, refusing to sell the team parts for vital engine rebuilds between races. The car finished 39th in the 2011 24 Hours Nürburgring (after bursting into flames) and in 2012 won its class and finished 12th overall.",
+            },
+            {
+              id: "scuderia-spider-16m",
+              name: "Scuderia Spider 16M",
+              year: "2009",
+              power: "503 hp",
+              description:
+                "The Ferrari Scuderia Spider 16M is a limited-edition marvel crafted to commemorate Ferrari's 16 Formula One Constructors' Championships. With only 499 units produced, it represents a rare blend of racing heritage and road-ready engineering. Based on the Ferrari Scuderia coupe, the 16M inherits the higher compression 4.3-liter V8 engine of the Scuderia, delivering an additional 20 bhp and 4 lb/ft of torque over the base Spider model.\n\nSignificant enhancements were made across the board, including the body kit, aerodynamics, suspension, interior, and electronics, all fine-tuned to match the Scuderia coupe's specifications. Weighing around 3300 pounds, the 16M sheds nearly 200 pounds compared to the F430 Spider, though it is still over 200 pounds heavier than the 430 Scuderia, largely due to its convertible nature.\n\nPerformance tests at Ferrari's Fiorano circuit proved the 16M to be faster than any other open-top road car previously produced by Ferrari. This isn't just about track performance; the 16M excellently balances high-octane sports car thrills with everyday usability. The adjustable suspension can be softened to provide a more comfortable ride, easing the intensity of the car's more performance-focused setup.\n\nDriving the 16M with the top down offers an exhilarating experience, thanks to the sonorous roar of its 503 horsepower V8 engine that revs up to 8,500 rpm. The sound is reminiscent of an F1 car, providing an unmatched auditory thrill—something that newer turbocharged models may struggle to replicate.\n\nThe debut of the 16M was a highlight at the Ferrari Finale in Mugello, emphasizing its role as a celebration of Ferrari's continuous F1 success. Its exclusivity and limited production make it highly desirable, likely causing concern among those awaiting other models like the new California.\n\nInterestingly, the name \"16M\" is not only significant for its reference to Ferrari's racing achievements but also nods to the brand's history, echoing the chassis number of one of Ferrari's earliest production cars, the 166MM Touring Barchetta. This model helped secure Ferrari's victory in the 1949 Mille Miglia, marking the beginning of Ferrari's prominence in automotive racing and production.",
+            },
+            {
+              id: "mat-new-stratos",
+              name: "MAT New Stratos",
+              year: "2018",
+              power: "540 hp",
+              description:
+                "The MAT New Stratos is often regarded as a superior Ferrari compared to current models sold by the brand. Built on the chassis of an older model, the F430, the New Stratos pays homage to the 1973-1978 Lancia Stratos. Despite its origins in the past, the New Stratos has carved out a niche as a true modern classic, developed to celebrate the iconic Lancia Stratos of rally fame.\n\nThe design journey for the New Stratos began at the Bertone design house in Turin, with Marcello Gandini at the helm. Gandini, who had previously created landmarks like the Lamborghini Miura and Countach, also designed the Lancia Stratos Zero, a concept car that led to the roadgoing Stratos HF. This vehicle was designed specifically for rally, distinguishing it from other cars adapted for racing, and it excelled in the World Rally Championship during the mid-70s.\n\nDecades later, the Stratos name was resurrected by Chris Hrabalek, who bought the rights and created the Fenomenon Stratos as a student project. This effort eventually led to the New Stratos, which debuted as a prototype at the 2005 Geneva auto show. The project saw multiple potential partnerships with firms like Prodrive and Pininfarina, with the latter finally helping to push the car towards production.\n\nThe modern Stratos utilizes a Ferrari 430 Scuderia as its base, maintaining the soul of a Ferrari with significant modifications. Despite challenges, including the unexpected death of Andrea Pininfarina, the car transitioned from prototype to production, albeit in a limited run due to parts acquisition issues with Ferrari.\n\nPhysically, the New Stratos is distinctive, featuring a shortened wheelbase and a body crafted from carbon fiber. Its interior is spartan, reflecting its racing heritage, and the car lacks modern comforts in favor of pure driving pleasure. The engine, a mid-mounted 4.3-liter V-8, is tuned to deliver an estimated 540 horsepower, providing exceptional power-to-weight performance.\n\nUltimately, the New Stratos is celebrated not for its suitability as an everyday car but for encapsulating the spirit of a true sports car. It strips down to the essentials, prioritizing the raw, exhilarating experience of driving over comfort, making it a worthy bearer of the Stratos legacy and a testament to what Ferrari once stood for in the automotive world.",
+            },
           ],
         },
         {

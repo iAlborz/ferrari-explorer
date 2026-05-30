@@ -46,7 +46,14 @@ async function getVqd(query: string): Promise<string | null> {
   return m ? m[1] : null;
 }
 
-async function searchImages(query: string): Promise<string[]> {
+export type SearchResult = {
+  image: string;
+  title: string;
+  url: string;
+  source: string; // hostname extracted from the page URL
+};
+
+async function searchImages(query: string): Promise<SearchResult[]> {
   const vqd = await getVqd(query);
   if (!vqd) return [];
   const api =
@@ -64,11 +71,26 @@ async function searchImages(query: string): Promise<string[]> {
     Referer: "https://duckduckgo.com/",
     Accept: "application/json, text/javascript, */*; q=0.01",
   });
-  const data = (await res.json()) as { results?: Array<{ image?: string }> };
+  const data = (await res.json()) as {
+    results?: Array<{ image?: string; title?: string; url?: string }>;
+  };
   return (data.results ?? [])
-    .map((r) => r.image)
-    .filter((u): u is string => !!u)
-    .filter((u) => !BAD_TOKENS.some((t) => u.toLowerCase().includes(t)));
+    .filter((r): r is { image: string; title?: string; url?: string } => !!r.image)
+    .filter((r) => !BAD_TOKENS.some((t) => r.image.toLowerCase().includes(t)))
+    .map((r) => {
+      let source = "";
+      try {
+        source = r.url ? new URL(r.url).hostname.replace(/^www\./, "") : "";
+      } catch {
+        // ignore malformed URLs
+      }
+      return {
+        image: r.image,
+        title: r.title ?? "",
+        url: r.url ?? "",
+        source,
+      };
+    });
 }
 
 async function readJson() {
@@ -124,17 +146,38 @@ function sendJson(res: any, status: number, body: unknown) {
   res.end(JSON.stringify(body));
 }
 
-// In-memory cache: query → full list of result URLs (so "Load more" doesn't
-// re-hit DDG every time)
-const queryCache = new Map<string, string[]>();
+// In-memory cache: query → full result list (so "Load more" doesn't re-hit DDG)
+const queryCache = new Map<string, SearchResult[]>();
 
-export function imagePickerPlugin(): Plugin {
+/** Configurable picker password — set via PICKER_PASSWORD in .env.local. */
+export function imagePickerPlugin(password?: string): Plugin {
+  // Reject the request if the configured password doesn't match. When no
+  // password is set, auth is disabled and everything works as before.
+  const requireAuth = (req: any, res: any): boolean => {
+    if (!password) return true; // no password configured → public
+    const provided = req.headers["x-picker-auth"];
+    if (provided === password) return true;
+    sendJson(res, 401, { error: "auth required" });
+    return false;
+  };
+
   return {
     name: "image-picker-server",
     apply: "serve",
     configureServer(server: ViteDevServer) {
+      // Lightweight ping endpoint so the frontend can check auth before opening
+      // the picker. Returns 200 if auth not required, 401 if it is and the
+      // header is missing/wrong.
+      server.middlewares.use("/api/auth-check", (req, res) => {
+        if (!password) return sendJson(res, 200, { authRequired: false });
+        const provided = req.headers["x-picker-auth"];
+        if (provided === password) return sendJson(res, 200, { authRequired: true, ok: true });
+        return sendJson(res, 401, { authRequired: true, ok: false });
+      });
+
       server.middlewares.use("/api/search-images", async (req, res) => {
         if (req.method !== "POST") return sendJson(res, 405, { error: "POST only" });
+        if (!requireAuth(req, res)) return;
         try {
           const { query, page = 0 } = await readBody(req);
           if (!query) return sendJson(res, 400, { error: "missing query" });
@@ -143,7 +186,7 @@ export function imagePickerPlugin(): Plugin {
           }
           const all = queryCache.get(query)!;
           const slice = all.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
-          sendJson(res, 200, { urls: slice, total: all.length, page });
+          sendJson(res, 200, { results: slice, total: all.length, page });
         } catch (e: any) {
           sendJson(res, 500, { error: e.message ?? String(e) });
         }
@@ -151,6 +194,7 @@ export function imagePickerPlugin(): Plugin {
 
       server.middlewares.use("/api/save-selection", async (req, res) => {
         if (req.method !== "POST") return sendJson(res, 405, { error: "POST only" });
+        if (!requireAuth(req, res)) return;
         try {
           const { slug, urls } = await readBody(req);
           if (!slug || !Array.isArray(urls)) return sendJson(res, 400, { error: "slug+urls required" });
