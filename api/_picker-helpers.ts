@@ -31,9 +31,13 @@ export function checkAuth(req: any): boolean {
 async function getVqd(query: string): Promise<string | null> {
   const url = `https://duckduckgo.com/?q=${encodeURIComponent(query)}&iax=images&ia=images`;
   const res = await fetch(url, { headers: { "User-Agent": UA } });
-  if (!res.ok) return null;
+  if (!res.ok) {
+    console.warn(`[picker] vqd page returned ${res.status}`);
+    return null;
+  }
   const html = await res.text();
   const m = /vqd=['"]([\d-]+)['"]/.exec(html) || /vqd=([\d-]+)/.exec(html);
+  if (!m) console.warn(`[picker] no vqd token in ${html.length}-byte HTML; preview: ${html.slice(0, 200)}`);
   return m ? m[1] : null;
 }
 
@@ -53,10 +57,17 @@ export async function searchImages(query: string): Promise<SearchResult[]> {
       Accept: "application/json, text/javascript, */*; q=0.01",
     },
   });
-  if (!res.ok) return [];
-  const data = (await res.json()) as {
-    results?: Array<{ image?: string; title?: string; url?: string }>;
-  };
+  if (!res.ok) {
+    console.warn(`[picker] i.js returned ${res.status}`);
+    return [];
+  }
+  let data: { results?: Array<{ image?: string; title?: string; url?: string }> };
+  try {
+    data = await res.json();
+  } catch (e) {
+    console.warn(`[picker] i.js JSON parse failed: ${e}`);
+    return [];
+  }
   return (data.results ?? [])
     .filter((r): r is { image: string; title?: string; url?: string } => !!r.image)
     .filter((r) => !BAD_TOKENS.some((t) => r.image.toLowerCase().includes(t)))
