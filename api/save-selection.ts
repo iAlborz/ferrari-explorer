@@ -31,8 +31,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Pull current state from GitHub
     const carsJsonText = await readRepoFile(gh, JSON_PATH);
     const cars: any[] = JSON.parse(carsJsonText);
-    const car = cars.find((c) => c.slug === slug);
-    if (!car) return res.status(404).json({ error: "slug not found" });
+    let car = cars.find((c) => c.slug === slug);
+    if (!car) {
+      // Upsert: this slug doesn't have an entry yet — create one.
+      console.log(`[picker] creating new figma-cars.json entry for "${slug}"`);
+      car = {
+        name: slug,
+        slug,
+        image_files: [],
+        production_count: null,
+        tags: [],
+        description: "",
+      };
+      cars.push(car);
+    }
 
     // For each entry: if it's an existing local file, we re-download via the
     // public URL on the deployed site (the simplest cross-version way to keep

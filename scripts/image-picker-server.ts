@@ -200,8 +200,16 @@ export function imagePickerPlugin(password?: string): Plugin {
           if (!slug || !Array.isArray(urls)) return sendJson(res, 400, { error: "slug+urls required" });
 
           const cars = await readJson();
-          const car = cars.find((c) => c.slug === slug);
-          if (!car) return sendJson(res, 404, { error: "slug not found" });
+          let car = cars.find((c) => c.slug === slug);
+          if (!car) {
+            // Upsert: slug not in JSON yet — create a new entry.
+            car = {
+              name: slug,
+              slug,
+              image_files: [],
+            } as any;
+            cars.push(car as any);
+          }
 
           // Some entries in `urls` may be existing local files (e.g.
           // "/cars/figma/enzo-2002-1.jpg") — read those into memory first so
