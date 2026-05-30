@@ -3,9 +3,6 @@ import type { Model } from "../data/cars";
 import { getVariationImages, slugifyVariation } from "../data/figmaImages";
 import { ImagePicker } from "./ImagePicker";
 
-// Only show the picker in dev — in production builds the API endpoints don't exist.
-const isDev = import.meta.env.DEV;
-
 export function ModelDetail({ model, onClose }: { model: Model; onClose: () => void }) {
   // Which variation's image picker is open, by variation id
   const [picking, setPicking] = useState<string | null>(null);
@@ -57,20 +54,14 @@ export function ModelDetail({ model, onClose }: { model: Model; onClose: () => v
                 {/* Header: name, year, power — above the images */}
                 <div className="px-1 pb-3">
                   <div className="flex items-baseline justify-between gap-2">
-                    {isDev ? (
-                      <button
-                        type="button"
-                        onClick={() => setPicking(v.id)}
-                        className="text-left font-display text-base font-bold leading-tight tracking-tight underline-offset-4 hover:underline md:text-lg"
-                        title="Click to pick images"
-                      >
-                        {v.name}
-                      </button>
-                    ) : (
-                      <h3 className="font-display text-base font-bold leading-tight tracking-tight md:text-lg">
-                        {v.name}
-                      </h3>
-                    )}
+                    <button
+                      type="button"
+                      onClick={() => setPicking(v.id)}
+                      className="text-left font-display text-base font-bold leading-tight tracking-tight underline-offset-4 hover:underline md:text-lg"
+                      title="Click to pick images"
+                    >
+                      {v.name}
+                    </button>
                     <span className="shrink-0 text-xs text-stone-400">{v.year}</span>
                   </div>
                   {v.power && (
@@ -105,7 +96,7 @@ export function ModelDetail({ model, onClose }: { model: Model; onClose: () => v
                 </div>
 
                 {/* Image picker modal */}
-                {isDev && picking === v.id && (
+                {picking === v.id && (
                   <ImagePicker
                     slug={slug}
                     initialQuery={`Ferrari ${v.name}`}
